@@ -1,0 +1,39 @@
+.title_borders > div {
+  width: 0rem;
+  height: 0rem;
+  pointer-events: none;
+}
+
+.title_borders_no_anim > div {
+  width: 8rem;
+  height: 8rem;
+  pointer-events: none;
+}
+
+.title_borders :nth-child(1) {
+  animation: horizontal-grow 2s ease-in forwards 1s;
+}
+
+.title_borders :nth-child(2) {
+  animation: vertical-grow 2s ease-in forwards 1s;
+}
+
+.title_borders :nth-child(3) {
+  animation: horizontal-grow 2s ease-in forwards 1s;
+}
+
+.title_borders :nth-child(4) {
+  animation: vertical-grow 2s ease-in forwards 1s;
+}
+
+@keyframes horizontal-grow {
+  to {
+    width: 8rem;
+  }
+}
+
+@keyframes vertical-grow {
+  to {
+    height: 8rem;
+  }
+}

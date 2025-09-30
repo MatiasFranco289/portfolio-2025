@@ -1,0 +1,21 @@
+.subtitle {
+  display: inline-block;
+  animation: enter 1s ease forwards 3.5s;
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.subtitle_no_anim {
+  display: inline-block;
+}
+
+@keyframes enter {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}

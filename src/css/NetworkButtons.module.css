@@ -1,0 +1,28 @@
+.network_buttons,
+.network_buttons_no_anim {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: end;
+}
+
+.network_buttons > :nth-child(1) {
+  transform: scale(0%);
+  animation: enter 0.3s ease forwards 3.5s;
+}
+
+.network_buttons > :nth-child(2) {
+  transform: scale(0%);
+  animation: enter 0.3s ease forwards 3.6s;
+}
+
+.network_buttons > :nth-child(3) {
+  transform: scale(0%);
+  animation: enter 0.3s ease forwards 3.7s;
+}
+
+@keyframes enter {
+  to {
+    transform: scale(100%);
+  }
+}
