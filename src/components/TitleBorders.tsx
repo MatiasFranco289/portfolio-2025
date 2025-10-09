@@ -1,8 +1,8 @@
 import styles from "../css/TitleBorders.module.css";
-import { useAnimation } from "./AnimationProvider";
+import { useGlobal } from "./GlobalProvider";
 
 export default function TitleBorders() {
-  const { homeVisited } = useAnimation();
+  const { homeVisited } = useGlobal();
 
   return (
     <div

@@ -1,8 +1,8 @@
 import styles from "../css/Title.module.css";
-import { useAnimation } from "./AnimationProvider";
+import { useGlobal } from "./GlobalProvider";
 
 export default function Title() {
-  const { homeVisited } = useAnimation();
+  const { homeVisited } = useGlobal();
 
   return (
     <div className="flex flex-col lg:flex-row space-x-12 space-y-6 lg:space-y-0 w-full">

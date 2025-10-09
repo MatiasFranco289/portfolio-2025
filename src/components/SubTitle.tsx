@@ -1,8 +1,8 @@
 import styles from "../css/SubTitle.module.css";
-import { useAnimation } from "./AnimationProvider";
+import { useGlobal } from "./GlobalProvider";
 
 export default function SubTitle() {
-  const { homeVisited } = useAnimation();
+  const { homeVisited } = useGlobal();
 
   return (
     <div

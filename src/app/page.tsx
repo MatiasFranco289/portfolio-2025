@@ -4,10 +4,10 @@ import SubTitle from "@/components/SubTitle";
 import TitleBorders from "@/components/TitleBorders";
 import NetworkButtons from "@/components/NetworkButtons";
 import { useEffect } from "react";
-import { useAnimation } from "@/components/AnimationProvider";
+import { useGlobal } from "@/components/GlobalProvider";
 
 export default function Home() {
-  const { homeVisited } = useAnimation();
+  const { homeVisited } = useGlobal();
 
   useEffect(() => {
     if (homeVisited.current) return;

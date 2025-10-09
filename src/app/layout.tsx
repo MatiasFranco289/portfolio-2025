@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Roboto } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
-import { AnimationProvider } from "@/components/AnimationProvider";
+import { GlobalProvider } from "@/components/GlobalProvider";
 import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
@@ -36,15 +36,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <AnimationProvider>
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased`}
-        >
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} ${roboto.variable} antialiased`}
+      >
+        <GlobalProvider>
           <Header />
           {children}
           <ToastContainer limit={1} autoClose={1000} />
-        </body>
-      </AnimationProvider>
+        </GlobalProvider>
+      </body>
     </html>
   );
 }

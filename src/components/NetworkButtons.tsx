@@ -3,13 +3,13 @@ import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { IoMailSharp } from "react-icons/io5";
 import styles from "../css/NetworkButtons.module.css";
-import { useAnimation } from "./AnimationProvider";
+import { useGlobal } from "./GlobalProvider";
 import { copyToClipboard } from "@/utils";
 import { toast } from "react-toastify";
 import toastStyles from "../css/Toast.module.css";
 
 export default function NetworkButtons() {
-  const { homeVisited } = useAnimation();
+  const { homeVisited } = useGlobal();
 
   return (
     <div
