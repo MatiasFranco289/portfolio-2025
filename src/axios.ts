@@ -13,7 +13,7 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.response && error.response.status === 401) {
+    if (error.response && error.response.status === 403) {
       localStorage.removeItem(API_KEY);
       window.location.reload();
     }

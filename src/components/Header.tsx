@@ -1,10 +1,23 @@
 "use client";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import styles from "../css/Header.module.css";
 
 export default function Header() {
   const pathname = usePathname();
+  const params = useParams();
+  const navTexts = {
+    es: {
+      home: "Inicio",
+      projects: "Proyectos",
+      about: "Sobre mí",
+    },
+    en: {
+      home: "Home",
+      projects: "Projects",
+      about: "About",
+    },
+  };
 
   return (
     <div className={styles.header}>
@@ -12,38 +25,38 @@ export default function Header() {
         <Link
           href={"/"}
           className={`${
-            pathname === "/"
+            pathname === `/${params.lang}`
               ? "text-white cursor-default scale-105"
               : "text-white/70 cursor-pointer"
           } hover:text-white hover:scale-105 duration-200 `}
         >
-          Inicio
+          {navTexts[(params.lang || "en") as keyof typeof navTexts].home}
         </Link>
       </span>
 
       <span>
         <Link
-          href={"/projects"}
+          href={`/${params.lang}/projects`}
           className={`${
-            pathname === "/projects"
+            pathname === `/${params.lang}/projects`
               ? "text-white cursor-default scale-105"
               : "text-white/70 cursor-pointer"
           } hover:text-white hover:scale-105 duration-200`}
         >
-          Proyectos
+          {navTexts[(params.lang || "en") as keyof typeof navTexts].projects}
         </Link>
       </span>
 
       <span>
         <Link
-          href={"/about"}
+          href={`/${params.lang}/about`}
           className={`${
-            pathname === "/about"
+            pathname === `/${params.lang}/about`
               ? "text-white cursor-default scale-105"
               : "text-white/70 cursor-pointer"
           } hover:text-white hover:scale-105 duration-200`}
         >
-          Sobre mí
+          {navTexts[(params.lang || "en") as keyof typeof navTexts].about}
         </Link>
       </span>
     </div>

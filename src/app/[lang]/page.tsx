@@ -7,12 +7,12 @@ import { useEffect } from "react";
 import { useGlobal } from "@/components/GlobalProvider";
 
 export default function Home() {
-  const { homeVisited } = useGlobal();
+  const { homeVisited, appReady } = useGlobal();
 
   useEffect(() => {
-    if (homeVisited.current) return;
+    if (homeVisited.current || !appReady) return;
     homeVisited.current = true;
-  }, []);
+  }, [appReady]);
 
   return (
     <div className="min-h-screen bg-[#1c1e1e] flex justify-center items-center font-roboto">

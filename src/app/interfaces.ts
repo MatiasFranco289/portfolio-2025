@@ -2,14 +2,7 @@ export interface Project {
   id: number;
   name: string;
   logo: string | null;
-  status:
-    | "ACTIVE"
-    | "INACTIVE"
-    | "PAUSED"
-    | "FINISHED"
-    | "DRAFT"
-    | "DISCARDED"
-    | "CANCELED";
+  status: ProjectStatus;
   public: boolean;
   start_date: string;
   end_date: string | null;
@@ -23,7 +16,16 @@ export interface Project {
   pagination: Pagination;
 }
 
-interface ProjectTag {
+export type ProjectStatus =
+  | "ACTIVE"
+  | "INACTIVE"
+  | "PAUSED"
+  | "FINISHED"
+  | "DRAFT"
+  | "DISCARDED"
+  | "CANCELED";
+
+export interface ProjectTag {
   id: number;
   name: string;
   created_at: string;
