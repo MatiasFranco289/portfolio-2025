@@ -16,6 +16,39 @@ export interface Project {
   pagination: Pagination;
 }
 
+export interface ProjectDetails extends Project {
+  collaborators: Array<Collaborator>;
+  technologies: Array<Technology>;
+  media: Array<Media>;
+  external_resources: Array<ExternalResource>;
+}
+
+export interface ExternalResource {
+  id: number;
+  url: string;
+  type: string;
+  name: string;
+}
+
+export interface Media {
+  id: number;
+  url: string;
+  type: string;
+}
+
+export interface Technology {
+  id: number;
+  name: string;
+}
+
+export interface Collaborator {
+  id: number;
+  username: string;
+  profile_photo: string;
+  project_role_id: number;
+  project_role_name: string;
+}
+
 export type ProjectStatus =
   | "ACTIVE"
   | "INACTIVE"

@@ -43,7 +43,7 @@ export default function ProjectCard({
         <span className="flex justify-between items-center flex-wrap">
           <span className="flex">
             <p className="font-roboto text-lg sm:text-xl">{name}</p>
-            {logo && <img src={logo} alt="" className="w-8 h-8" />}
+            {logo && <img src={logo} alt="" className="w-8 h-8 ml-2" />}
           </span>
 
           <ProjectStatusTag status={status} />

@@ -6,3 +6,4 @@ export const API_KEY = "API_KEY";
 
 export const LOGIN_URL = "/auth/login";
 export const PROJECTS_URL = "/users/3/projects";
+export const PROJECT_DETAILS_URL = "/projects";
