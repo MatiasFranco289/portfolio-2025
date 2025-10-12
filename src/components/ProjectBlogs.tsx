@@ -5,6 +5,7 @@ import { API_KEY, BLOGS_URL, PROJECTS_URL } from "@/constants";
 import { useParams } from "next/navigation";
 import { Blog } from "@/app/interfaces";
 import MarkdownSection from "./MarkdownSection";
+import styles from "@/css/ProjectDetails.module.css";
 
 export default function ProjectBlogs() {
   const { appReady } = useGlobal();
@@ -72,7 +73,7 @@ export default function ProjectBlogs() {
         <div className="space-y-12">
           {blogs.map((blog, index) => {
             return (
-              <div key={`blog_${index}`}>
+              <div key={`blog_${index}`} className={styles.left_item}>
                 <div className="border border-white w-2/6 h-[1px] mt-12" />
                 <div className="my-2">
                   <h3 className="text-xl font-semibold">{blog.title}</h3>

@@ -8,6 +8,7 @@ import { FaConfluence } from "react-icons/fa";
 import { FaGoogleDrive } from "react-icons/fa";
 import { IoIosDocument } from "react-icons/io";
 import { IoIosLink } from "react-icons/io";
+import styles from "@/css/ProjectDetails.module.css";
 
 interface ExternalResourceListProps {
   externalResources: Array<ExternalResource>;
@@ -29,14 +30,20 @@ export default function ExternalResourceList({
   };
 
   return (
-    <div className="space-y-2 mb-3">
+    <div className="space-y-2 mb-3 flex flex-col items-start">
       {externalResources.map((resource, index) => {
         return (
-          <div key={`resource_${index}`} className="flex items-center">
-            {externalResourceIcons[resource.type]}
-            <a href={resource.url} target="_blank" className="underline ml-2">
-              {resource.name}
-            </a>
+          <div
+            key={`resource_${index}`}
+            className={styles.left_item}
+            style={{ animationDelay: `${index * 200}ms` }}
+          >
+            <div className="flex items-center hover:scale-105 duration-200">
+              {externalResourceIcons[resource.type]}
+              <a href={resource.url} target="_blank" className="underline ml-2">
+                {resource.name}
+              </a>
+            </div>
           </div>
         );
       })}

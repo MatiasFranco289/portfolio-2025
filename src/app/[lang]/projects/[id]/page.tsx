@@ -8,8 +8,9 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import ExternalResourceList from "@/components/ExternalResourceList";
 import ProjectBlogs from "@/components/ProjectBlogs";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import ProjectDetailsLoading from "@/components/ProjectDetailsLoading";
+import styles from "@/css/ProjectDetails.module.css";
+import ProjectStatusTag from "@/components/ProjectTag";
 
 export default function ProjectDetails() {
   const { appReady } = useGlobal();
@@ -49,27 +50,47 @@ export default function ProjectDetails() {
   return project ? (
     <div className="bg-[#1c1e1e] min-h-screen w-full p-6 flex justify-center font-roboto">
       <div className="w-full sm:w-4/6">
-        <span className="flex items-center mt-12 mb-3">
-          <h2 className="text-3xl font-semibold">{project.name}</h2>
-          {project.logo && (
-            <img
-              src={project.logo}
-              alt="project_logo"
-              className="w-8 h-8 ml-2"
-            />
-          )}
-        </span>
+        <div className="flex flex-row justify-between items-center mt-12">
+          <span className="flex items-center mb-3">
+            <h2 className="text-3xl font-semibold">{project.name}</h2>
+
+            {project.logo && (
+              <img
+                src={project.logo}
+                alt="project_logo"
+                className="w-8 h-8 ml-2"
+              />
+            )}
+          </span>
+
+          <div className="flex space-x-2 text-sm">
+            <div>{project.start_date.split("T")[0]}</div>
+
+            <div>-</div>
+
+            {project.end_date ? (
+              <div>{project.end_date.split("T")[0]}</div>
+            ) : project.estimated_end ? (
+              <div>{project.estimated_end.split("T")[0] + "(Estimated)"}</div>
+            ) : (
+              <div>????-??-??</div>
+            )}
+          </div>
+        </div>
 
         <div className="flex flex-wrap">
           {project.technologies &&
             project.technologies.map((t, index) => {
               return (
-                <span
+                <div
                   key={`project_${project.id}_technology_${t.id}`}
-                  className="border border-white rounded-full px-2 py-1 m-1"
+                  className={styles.up_item}
+                  style={{ animationDelay: `${index * 200}ms` }}
                 >
-                  {t.name}
-                </span>
+                  <span className="border border-white rounded-full px-2 py-1 m-1">
+                    {t.name}
+                  </span>
+                </div>
               );
             })}
         </div>
@@ -78,7 +99,9 @@ export default function ProjectDetails() {
 
         <ExternalResourceList externalResources={project.external_resources} />
 
-        <MarkdownSection content={project.long_description} />
+        <div className={styles.unfold} style={{ animationDelay: "1s" }}>
+          <MarkdownSection content={project.long_description} />
+        </div>
 
         <ProjectBlogs />
       </div>
