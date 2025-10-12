@@ -34,7 +34,7 @@ export default function ExternalResourceList({
         return (
           <div key={`resource_${index}`} className="flex items-center">
             {externalResourceIcons[resource.type]}
-            <a href={resource.url} className="underline ml-2">
+            <a href={resource.url} target="_blank" className="underline ml-2">
               {resource.name}
             </a>
           </div>
