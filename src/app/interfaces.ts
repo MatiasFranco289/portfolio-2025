@@ -26,7 +26,16 @@ export interface ProjectDetails extends Project {
 export interface ExternalResource {
   id: number;
   url: string;
-  type: string;
+  type:
+    | "GITHUB"
+    | "BITBUCKET"
+    | "OTHER_REPO"
+    | "JIRA"
+    | "TRELLO"
+    | "CONFLUENCE"
+    | "DRIVE"
+    | "OTHER"
+    | "WEB";
   name: string;
 }
 
@@ -61,6 +70,16 @@ export type ProjectStatus =
 export interface ProjectTag {
   id: number;
   name: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Blog {
+  id: number;
+  user_id: number;
+  project_id: number;
+  title: string;
+  body: string;
   created_at: string;
   updated_at: string;
 }

@@ -5,6 +5,7 @@ import styles from "../css/ProjectCard.module.css";
 import { useEffect, useState } from "react";
 
 interface ProjectCardProps {
+  id: number;
   name: string;
   shortDescription: string;
   logo: string | null;
@@ -14,6 +15,7 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({
+  id,
   name,
   shortDescription,
   logo,
@@ -37,7 +39,7 @@ export default function ProjectCard({
       <div
         className={styles.project_card}
         onClick={() => {
-          router.push(`/${lang}/projects/details`);
+          router.push(`/${lang}/projects/${id}`);
         }}
       >
         <span className="flex justify-between items-center flex-wrap">

@@ -3,9 +3,13 @@ import { ProjectDetails as ProjectDetailsI } from "@/app/interfaces";
 import axiosInstance from "@/axios";
 import { useGlobal } from "@/components/GlobalProvider";
 import MarkdownSection from "@/components/MarkdownSection";
-import { API_KEY, PROJECT_DETAILS_URL } from "@/constants";
+import { API_KEY, PROJECTS_URL } from "@/constants";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import ExternalResourceList from "@/components/ExternalResourceList";
+import ProjectBlogs from "@/components/ProjectBlogs";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import ProjectDetailsLoading from "@/components/ProjectDetailsLoading";
 
 export default function ProjectDetails() {
   const { appReady } = useGlobal();
@@ -14,12 +18,12 @@ export default function ProjectDetails() {
   const [project, setProject] = useState<ProjectDetailsI>();
 
   useEffect(() => {
-    if (appReady) return;
+    if (!appReady) return;
 
     async function getProjectDetails() {
       const token = localStorage.getItem(API_KEY);
 
-      axiosInstance(`${PROJECT_DETAILS_URL}/${projectID}`, {
+      axiosInstance(`${PROJECTS_URL}/${projectID}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -42,23 +46,21 @@ export default function ProjectDetails() {
     getProjectDetails();
   }, [appReady]);
 
-  return (
-    project && (
-      <div className="bg-[#1c1e1e] min-h-screen w-full p-6 flex justify-center">
-        <div className="w-4/6">
-          <span className="flex items-center mt-12 mb-3">
-            <h2 className="font-roboto text-3xl font-semibold">
-              {project.name}
-            </h2>
-            {project.logo && (
-              <img
-                src={project.logo}
-                alt="project_logo"
-                className="w-8 h-8 ml-2"
-              />
-            )}
-          </span>
+  return project ? (
+    <div className="bg-[#1c1e1e] min-h-screen w-full p-6 flex justify-center font-roboto">
+      <div className="w-full sm:w-4/6">
+        <span className="flex items-center mt-12 mb-3">
+          <h2 className="text-3xl font-semibold">{project.name}</h2>
+          {project.logo && (
+            <img
+              src={project.logo}
+              alt="project_logo"
+              className="w-8 h-8 ml-2"
+            />
+          )}
+        </span>
 
+        <div className="flex flex-wrap">
           {project.technologies &&
             project.technologies.map((t, index) => {
               return (
@@ -70,12 +72,18 @@ export default function ProjectDetails() {
                 </span>
               );
             })}
-
-          <div className="h-6" />
-
-          <MarkdownSection content={project.long_description} />
         </div>
+
+        <div className="h-6" />
+
+        <ExternalResourceList externalResources={project.external_resources} />
+
+        <MarkdownSection content={project.long_description} />
+
+        <ProjectBlogs />
       </div>
-    )
+    </div>
+  ) : (
+    <ProjectDetailsLoading />
   );
 }

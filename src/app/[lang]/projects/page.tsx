@@ -1,7 +1,7 @@
 "use client";
 import axiosInstance from "@/axios";
 import { useGlobal } from "@/components/GlobalProvider";
-import { API_KEY, PROJECTS_URL } from "@/constants";
+import { API_KEY, PROJECTS_FROM_USER_URL } from "@/constants";
 import { useEffect, useState } from "react";
 import { Project } from "../../interfaces";
 import ProjectCard from "@/components/ProjectCard";
@@ -26,7 +26,7 @@ export default function Projects() {
       const jwt = localStorage.getItem(API_KEY);
 
       axiosInstance
-        .get(PROJECTS_URL, {
+        .get(PROJECTS_FROM_USER_URL, {
           headers: {
             Authorization: `Bearer ${jwt}`,
           },
@@ -57,6 +57,7 @@ export default function Projects() {
           {projects.map((project, index) => {
             return (
               <ProjectCard
+                id={project.id}
                 name={project.name}
                 shortDescription={project.short_description}
                 logo={project.logo}
