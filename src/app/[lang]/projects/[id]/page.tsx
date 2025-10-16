@@ -10,7 +10,6 @@ import ExternalResourceList from "@/components/ExternalResourceList";
 import ProjectBlogs from "@/components/ProjectBlogs";
 import ProjectDetailsLoading from "@/components/ProjectDetailsLoading";
 import styles from "@/css/ProjectDetails.module.css";
-import ProjectStatusTag from "@/components/ProjectTag";
 
 export default function ProjectDetails() {
   const { appReady } = useGlobal();

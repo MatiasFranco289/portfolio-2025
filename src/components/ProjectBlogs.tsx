@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import { Blog } from "@/app/interfaces";
 import MarkdownSection from "./MarkdownSection";
 import styles from "@/css/ProjectDetails.module.css";
+import Separator from "./Separator";
 
 export default function ProjectBlogs() {
   const { appReady } = useGlobal();
@@ -62,11 +63,9 @@ export default function ProjectBlogs() {
   }
 
   return (
-    blogs && (
+    blogs.length > 0 && (
       <div className="font-roboto">
-        <div className="h-36 w-full flex items-center justify-center">
-          <div className="border border-white w-6/6 h-[1px] mt-12" />
-        </div>
+        <Separator />
 
         <h3 className="text-3xl font-semibold">Blogs</h3>
 
@@ -74,7 +73,7 @@ export default function ProjectBlogs() {
           {blogs.map((blog, index) => {
             return (
               <div key={`blog_${index}`} className={styles.left_item}>
-                <div className="border border-white w-2/6 h-[1px] mt-12" />
+                <Separator gap="h-12" position="end" width="w-2/6" />
                 <div className="my-2">
                   <h3 className="text-xl font-semibold">{blog.title}</h3>
                   <p className="text-sm">{blog.created_at.split("T")[0]}</p>

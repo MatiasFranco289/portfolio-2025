@@ -8,3 +8,5 @@ export const LOGIN_URL = "/auth/login";
 export const PROJECTS_FROM_USER_URL = "/users/3/projects";
 export const PROJECTS_URL = "/projects";
 export const BLOGS_URL = "/blogs";
+
+export const USER_DETAILS_URL = "/users/3";
