@@ -8,8 +8,11 @@ export function middleware(req: NextRequest) {
     return NextResponse.next();
   }
 
+  const acceptLang = req.headers.get("accept-language") || "";
+  const prefersSpanish = acceptLang.toLowerCase().startsWith("es");
+
   const url = req.nextUrl.clone();
-  url.pathname = `/en${pathname}`;
+  url.pathname = `/${prefersSpanish ? "es" : "en"}${pathname}`;
   return NextResponse.redirect(url);
 }
 
