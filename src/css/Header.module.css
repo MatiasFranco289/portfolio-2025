@@ -1,0 +1,35 @@
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 1.25rem;
+  font-family: Roboto;
+}
+
+.header > span {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.header > :nth-child(1) {
+  animation: start 0.25s ease forwards;
+}
+
+.header > :nth-child(2) {
+  animation: start 0.25s ease forwards 0.1s;
+}
+
+.header > :nth-child(3) {
+  animation: start 0.25s ease forwards 0.2s;
+}
+
+@keyframes start {
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}

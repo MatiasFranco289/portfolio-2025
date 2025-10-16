@@ -1,0 +1,13 @@
+.info_toast {
+  background-color: #1d1e1e;
+  color: white;
+  font-family: Roboto;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.info_toast_bar {
+  background-color: white;
+}
