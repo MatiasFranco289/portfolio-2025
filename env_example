@@ -1,0 +1,3 @@
+NEXT_PUBLIC_API_URL="https://api.sunless-dev.site/api/v1"
+NEXT_PUBLIC_API_USERNAME = "guest"
+NEXT_PUBLIC_API_PASSWORD = "Password123!"
