@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import ExternalResourceList from "@/components/ExternalResourceList";
 import ProjectBlogs from "@/components/ProjectBlogs";
 import ProjectDetailsLoading from "@/components/ProjectDetailsLoading";
-import styles from "@/css/ProjectDetails.module.css";
+import styles from "@/css/CommonAnimations.module.css";
 
 export default function ProjectDetails() {
   const { appReady } = useGlobal();
@@ -47,10 +47,10 @@ export default function ProjectDetails() {
   }, [appReady]);
 
   return project ? (
-    <div className="bg-[#1c1e1e] min-h-screen w-full p-6 flex justify-center font-roboto">
+    <div className="bg-[#1c1e1e] min-h-screen w-full p-3 pt-6 sm:p-6 flex justify-center font-roboto">
       <div className="w-full sm:w-4/6">
-        <div className="flex flex-row justify-between items-center mt-12">
-          <span className="flex items-center mb-3">
+        <div className="flex flex-row flex-wrap justify-between items-center mt-12 mb-6">
+          <div className="flex items-center">
             <h2 className="text-3xl font-semibold">{project.name}</h2>
 
             {project.logo && (
@@ -60,9 +60,9 @@ export default function ProjectDetails() {
                 className="w-8 h-8 ml-2"
               />
             )}
-          </span>
+          </div>
 
-          <div className="flex space-x-2 text-sm">
+          <div className="flex flex-wrap space-x-2 text-sm ml-6 text-white/60">
             <div>{project.start_date.split("T")[0]}</div>
 
             <div>-</div>
@@ -83,12 +83,16 @@ export default function ProjectDetails() {
               return (
                 <div
                   key={`project_${project.id}_technology_${t.id}`}
-                  className={styles.up_item}
-                  style={{ animationDelay: `${index * 200}ms` }}
+                  className="m-2"
                 >
-                  <span className="border border-white rounded-full px-2 py-1 m-1">
-                    {t.name}
-                  </span>
+                  <div
+                    className={styles.up_item}
+                    style={{ animationDelay: `${index * 200}ms` }}
+                  >
+                    <span className="border border-white rounded-full px-2 py-1">
+                      {t.name}
+                    </span>
+                  </div>
                 </div>
               );
             })}

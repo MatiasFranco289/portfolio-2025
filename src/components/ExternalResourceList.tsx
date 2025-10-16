@@ -8,7 +8,7 @@ import { FaConfluence } from "react-icons/fa";
 import { FaGoogleDrive } from "react-icons/fa";
 import { IoIosDocument } from "react-icons/io";
 import { IoIosLink } from "react-icons/io";
-import styles from "@/css/ProjectDetails.module.css";
+import styles from "@/css/CommonAnimations.module.css";
 
 interface ExternalResourceListProps {
   externalResources: Array<ExternalResource>;

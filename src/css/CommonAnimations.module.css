@@ -3,6 +3,11 @@
   opacity: 0;
 }
 
+.right_item {
+  animation: enter-from-right 0.5s ease-in-out forwards;
+  opacity: 0;
+}
+
 .up_item {
   animation: enter-from-above 0.5s ease-in-out forwards;
   opacity: 0;
@@ -44,5 +49,16 @@
   }
   100% {
     transform: scaleY(1) scaleX(1);
+  }
+}
+
+@keyframes enter-from-right {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
   }
 }

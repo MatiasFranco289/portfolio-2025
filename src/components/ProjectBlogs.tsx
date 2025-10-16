@@ -5,7 +5,7 @@ import { API_KEY, BLOGS_URL, PROJECTS_URL } from "@/constants";
 import { useParams } from "next/navigation";
 import { Blog } from "@/app/interfaces";
 import MarkdownSection from "./MarkdownSection";
-import styles from "@/css/ProjectDetails.module.css";
+import styles from "@/css/CommonAnimations.module.css";
 import Separator from "./Separator";
 
 export default function ProjectBlogs() {

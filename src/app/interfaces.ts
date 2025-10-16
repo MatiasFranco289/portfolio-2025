@@ -135,7 +135,7 @@ export interface Education {
   updated_at: string;
 }
 
-interface Skill {
+export interface Skill {
   id: number;
   name: string;
 }
